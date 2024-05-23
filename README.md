@@ -1,28 +1,24 @@
 # Spring Boot Project
 
 ## Project Overview
-This is a Spring Boot project version 3.0.5 with Java 19. It utilizes SQL Server as its database management system. The project includes RESTful APIs for managing users and groups.
+This project is built using Spring Boot version 3.0.5 and Java 19. It employs an H2 in-memory database for caching and initial data setup. The primary functionality of this application is to manage users and groups via RESTful APIs.
 
 ## Prerequisites
 - Java 19
-- SQL Server
 - Postman (optional, for API testing)
 
-## Setting Up SQL Server
-1. Ensure SQL Server is installed and running.
-2. Update the SQL Server password in the `application.properties` file to match your SQL Server credentials.
-
 ## Database Setup
-1. Create a database named `user_group_assignment`.
-2. Configure the `application.properties` file to connect to the `user_group_assignment` database.
-3. Set `ddl-auto` property to `update` in `application.properties`. This will create tables automatically.
+The project uses an H2 in-memory database. You don't need to do any external database setup. The database schema and sample data are automatically initialized when the application starts.
+
+## Database Configuration
+The database configuration is specified in the application.yml file
 
 ## Adding Sample Data
-Use the provided SQL file to add sample data to the `user_group_assignment` database.
+The data.sql file in the src/main/resources directory contains sample data that will be automatically loaded into the H2 database upon application startup.
 
 ## Running the Project
-1. Build and run the project.
-2. Use Postman or any other REST client to make requests to the following APIs:
+1. Build the project using: mvn clean install
+2. Use Postman or any other REST client to interact with the APIs listed below.
 
 ## User APIs
 
