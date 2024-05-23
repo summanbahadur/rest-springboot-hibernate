@@ -42,7 +42,7 @@ class UserServiceTest {
 
     when(userRepository.save(any(User.class))).thenReturn(user);
 
-    UserDTO createdUser = userService.createUser(user);
+    User createdUser = userService.createUser(user);
 
     assertNotNull(createdUser);
     assertEquals("testuser", createdUser.getUsername());
@@ -107,7 +107,7 @@ class UserServiceTest {
     when(userRepository.findById(1L)).thenReturn(Optional.of(existingUser));
     when(userRepository.save(any(User.class))).thenReturn(existingUser);
 
-    UserDTO result = userService.updateUser(1L, updatedUser);
+    User result = userService.updateUser(1L, updatedUser);
 
     assertNotNull(result);
     assertEquals("updatedUser", result.getUsername());

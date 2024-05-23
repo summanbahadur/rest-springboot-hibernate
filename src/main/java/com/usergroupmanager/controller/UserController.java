@@ -21,7 +21,7 @@ public class UserController {
 
   @PostMapping
   public ResponseEntity<UserDTO> createUser(@Validated @RequestBody User user) {
-    return ResponseEntity.ok(userService.createUser(user));
+    return ResponseEntity.ok(convertToDTO(userService.createUser(user)));
   }
 
   @GetMapping("/{id}")
@@ -36,7 +36,7 @@ public class UserController {
 
   @PutMapping("/{id}")
   public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @Validated @RequestBody User user) {
-    return ResponseEntity.ok(userService.updateUser(id, user));
+    return ResponseEntity.ok(convertToDTO(userService.updateUser(id, user)));
   }
 
   @DeleteMapping("/{id}")
@@ -60,6 +60,13 @@ public class UserController {
   @GetMapping("/{userId}/groups")
   public ResponseEntity<List<Group>> getUserGroups(@PathVariable Long userId) {
     return ResponseEntity.ok(userService.getUserGroups(userId));
+  }
+  private UserDTO convertToDTO(User user) {
+    UserDTO userDTO = new UserDTO();
+    userDTO.setId(user.getId());
+    userDTO.setUsername(user.getUsername());
+    userDTO.setEmail(user.getEmail());
+    return userDTO;
   }
 
 }

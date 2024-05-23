@@ -21,11 +21,11 @@ public class UserService {
   @Autowired
   private GroupRepository groupRepository;
 
-  public UserDTO createUser(User user) {
+  public User createUser(User user) {
     if (user == null) {
       throw new RequiredObjectIsNullException("User object cannot be null");
     }
-    return convertToDTO(userRepository.save(user));
+    return userRepository.save(user);
   }
 
   public User getUserById(Long id) {
@@ -36,7 +36,7 @@ public class UserService {
     return userRepository.findAll();
   }
 
-  public UserDTO updateUser(Long id, User user) {
+  public User updateUser(Long id, User user) {
     if (user == null) {
       throw new RequiredObjectIsNullException("User object cannot be null");
     }
@@ -47,16 +47,10 @@ public class UserService {
       }
       existingUser.setEmail(user.getEmail());
       existingUser.setGroups(user.getGroups());
-      return convertToDTO( userRepository.save(existingUser));
+      return userRepository.save(existingUser);
     }).orElseThrow(() -> new ResourceNotFoundException("User not found with id :: " + id));
   }
-  private UserDTO convertToDTO(User user) {
-    UserDTO userDTO = new UserDTO();
-    userDTO.setId(user.getId());
-    userDTO.setUsername(user.getUsername());
-    userDTO.setEmail(user.getEmail());
-    return userDTO;
-  }
+
   public void deleteUser(Long id) {
     User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :: " + id));
     userRepository.delete(user);
