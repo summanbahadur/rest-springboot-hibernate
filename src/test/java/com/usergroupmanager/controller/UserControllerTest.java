@@ -44,12 +44,7 @@ class UserControllerTest {
     user.setUsername("testUser");
     user.setEmail("test@example.com");
 
-    UserDTO userDTO = new UserDTO();
-    userDTO.setId(user.getId());
-    userDTO.setUsername(user.getUsername());
-    userDTO.setEmail(user.getEmail());
-
-    when(userService.createUser(any(User.class))).thenReturn(userDTO);
+    when(userService.createUser(any(User.class))).thenReturn(user);
 
     MockHttpServletRequestBuilder requestBuilder = post("/api/users")
         .contentType(MediaType.APPLICATION_JSON)
@@ -104,12 +99,7 @@ class UserControllerTest {
     user.setUsername("updatedUser");
     user.setEmail("updated@example.com");
 
-    UserDTO userDTO = new UserDTO();
-    userDTO.setId(user.getId());
-    userDTO.setUsername(user.getUsername());
-    userDTO.setEmail(user.getEmail());
-
-    when(userService.updateUser(any(Long.class), any(User.class))).thenReturn(userDTO);
+    when(userService.updateUser(any(Long.class), any(User.class))).thenReturn(user);
 
     MockHttpServletRequestBuilder requestBuilder = put("/api/users/1")
         .contentType(MediaType.APPLICATION_JSON)
