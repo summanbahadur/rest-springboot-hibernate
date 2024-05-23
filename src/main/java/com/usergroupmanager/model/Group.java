@@ -18,11 +18,10 @@ public class Group {
   @Column
   private String description;
 
-  @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+  @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
   private Set<User> users = new HashSet<>();
 
   // Getters and Setters
-
   public Long getId() {
     return id;
   }
@@ -55,4 +54,3 @@ public class Group {
     this.users = users;
   }
 }
-

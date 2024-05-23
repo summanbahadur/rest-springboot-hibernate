@@ -1,4 +1,5 @@
 package com.usergroupmanager.model;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "User")
+@Table(name = "`User`")
 public class User {
 
   @Id
@@ -19,7 +20,6 @@ public class User {
   @Column(nullable = false, unique = true)
   private String username;
 
-  //@NotBlank(message = "Password is mandatory")
   @Size(min = 8, message = "Password must be at least 8 characters long")
   @Column(nullable = false)
   private String password;
@@ -35,7 +35,6 @@ public class User {
   private Set<Group> groups = new HashSet<>();
 
   // Getters and Setters
-
   public Long getId() {
     return id;
   }
