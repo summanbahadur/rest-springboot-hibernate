@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/user_group_assignment?useTimezone=true&serverTimezone=UTC
     username: root
-    password: 7Nbox*?drop3
+    password: *****
   jpa:
     hibernate:
       ddl-auto: update
