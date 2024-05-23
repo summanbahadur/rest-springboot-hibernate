@@ -1,1 +1,1 @@
-# rest-springboot-hibernate
+# rest-with-springboot-and-java
